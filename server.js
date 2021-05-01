@@ -9,26 +9,26 @@ app.use(
     extended: true,
   })
 );
-const harrow = require("./challenge-london-mini-guide/data/Harrow.json");
-const heathrow = require("./challenge-london-mini-guide/data/Heathrow.json");
-const stratford = require("./challenge-london-mini-guide/data/Stratford.json");
 
-app.get("/:city/pharmacies", (req, res) => {
+const Harrow = require("./challenge-london-mini-guide/data/Harrow.json");
+const Heathrow = require("./challenge-london-mini-guide/data/Heathrow.json");
+const Stratford = require("./challenge-london-mini-guide/data/Stratford.json");
+
+app.get("/:city/:category", (req, res) => {
   const city = req.params.city;
+  const category = req.params.category;
 
-  if (city === "Harrow") {
-    const harrowPharmacies = harrow.pharmacies.map((pharmacy) => pharmacy.name);
-    res.json(harrowPharmacies);
-  } else if (city === "Heathrow") {
-    const HeathrowPhramacies = heathrow.pharmacies.map(
-      (pharmacy) => pharmacy.name
-    );
-    res.json(HeathrowPhramacies);
-  } else if (city === "Stratford") {
-    const stratfordPhramacies = stratford.pharmacies.map(
-      (pharmacy) => pharmacy.name
-    );
-    res.json(stratfordPhramacies);
+  // check if city and category are provided
+  if (city && category) {
+    if (city === "Harrow") {
+      res.status(200).json(Harrow[category]);
+    } else if (city === "Heathrow") {
+      res.status(200).json(Heathrow[category]);
+    } else if (city === "Stratford") {
+      res.status(200).json(Stratford[category]);
+    }
+  } else {
+    res.status(404).json({ msg: "bad request" });
   }
 });
 
