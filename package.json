@@ -1,0 +1,18 @@
+{
+  "name": "full-stack-exrecise",
+  "version": "1.0.0",
+  "description": "paired programming",
+  "main": "server.js",
+  "scripts": {
+    "nodemon": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Senait Ekubai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
