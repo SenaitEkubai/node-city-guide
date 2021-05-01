@@ -20,6 +20,9 @@ app.use(
 const Harrow = require("./challenge-london-mini-guide/data/Harrow.json");
 const Heathrow = require("./challenge-london-mini-guide/data/Heathrow.json");
 const Stratford = require("./challenge-london-mini-guide/data/Stratford.json");
+app.get("/", (req, res) => {
+  res.send("city/category");
+});
 
 app.get("/:city/:category", (req, res) => {
   const city = req.params.city;
